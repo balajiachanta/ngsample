@@ -1,18 +1,25 @@
+import { AuthenticationService } from './_services';
+import { AlertService } from './_services/alert.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
-import { AppComponent } from './app.component';
+import { AppComponent, routes } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, RouterModule.forRoot(routes), FormsModule, HttpClientModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
